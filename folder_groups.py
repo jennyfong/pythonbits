@@ -2,6 +2,10 @@
 
 from itertools import groupby
 
+def getRootPath(path):
+    rootPath = path.split('/')[0]
+    return rootPath
+
 def getFolderGroup(filePaths):
     '''
     Convert a list of paths into a dictionary, grouped by the folders
@@ -18,7 +22,7 @@ def getFolderGroup(filePaths):
     folderDict = {}
 
     # Group the folder and files, group by the first folder, using the '/' as the separator
-    for folder, files in groupby(filePaths, key=lambda x: x.split('/')[0]):
+    for folder, files in groupby(filePaths, key=getRootPath):
         relativeFilePaths = []
         # Convert the iterator (files) to a list (children)
         children = [child for child in files]
