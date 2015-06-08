@@ -87,12 +87,10 @@ def getFileGroups(files):
     # Sort the files so that they display in order
     files = sorted(files)
 
-    # Get the file groups
-    fileGroups = groupby(files, key=fileGroupName)
-
     fileGroups = []
-    # For all groups pants, shirts etc.
-    for key, group in fileGroups:
+
+    # Get the file groups
+    for key, group in groupby(files, key=fileGroupName):
         # Get all the numbers in a sorted list, [0001, 0002] etc
         numList = [fileNumber(file) for file in group]
         frameNumbers = groupByNumbers(numList)
